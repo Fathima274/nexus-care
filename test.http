@@ -1,0 +1,13 @@
+POST http://localhost:5000/api/hospitals
+Content-Type: application/json
+
+{
+  "name": "Unity Hospital",
+  "address": "Highlands, Mangalore",
+  "contactNumber": "0824-2222345",
+  "totalBeds": 200,
+  "availableBeds": 45,
+  "doctorsAvailable": 30,
+  "imageUrl": "https://unityhospitalmangalore.com/images/hospital.jpg",
+  "description": "Unity Hospital is one of the leading multi-specialty hospitals in Mangalore."
+}

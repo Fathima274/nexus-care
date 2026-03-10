@@ -1,0 +1,32 @@
+{
+  "name": "carenexus-backend",
+  "version": "1.0.0",
+  "description": "Backend for CareNexus – an AI-powered doctor and hospital finder with live map integration.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Fathima",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcrypt": "^6.0.0",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-validator": "^7.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "leaflet": "^1.9.4",
+    "leaflet-routing-machine": "^3.2.12",
+    "mongoose": "^8.20.0",
+    "multer": "^2.0.2",
+    "react-leaflet": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "main": "server.js"
+}
