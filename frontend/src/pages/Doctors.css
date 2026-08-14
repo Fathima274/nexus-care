@@ -1,0 +1,66 @@
+.doctors-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.doctors-page h1 {
+  color: #0d47a1;
+  font-size: 2.2rem;
+}
+
+.doc-search-box {
+  width: 350px;
+  background: white;
+  margin: 20px auto;
+  padding: 10px 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.doc-search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.doctor-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.doctor-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.25s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+}
+
+.spec {
+  color: #0d47a1;
+  font-weight: 600;
+}
+
+.call-btn {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 16px;
+  background: #1565c0;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}

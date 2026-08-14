@@ -1,0 +1,114 @@
+/* ===== Navbar Layout ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* ===== Logo Section ===== */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #0b3558;
+  font-weight: 700;
+  font-size: 1.4rem;
+  white-space: nowrap; /* ✅ keeps NexusCare+ in one line */
+  gap: 0.4rem;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  color: #0b3558;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.logo-plus {
+  color: #00AEEF;
+  font-weight: 800;
+}
+
+/* ===== Navigation Links ===== */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #0b3558;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ff7b00;
+}
+
+/* ===== SOS Emergency Button ===== */
+.sos-button {
+  background-color: #ff7b00;
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.sos-button:hover {
+  background-color: #ff6600;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+  }
+
+  .nav-links {
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .sos-button {
+    align-self: flex-end;
+    margin-top: 0.8rem;
+  }
+}

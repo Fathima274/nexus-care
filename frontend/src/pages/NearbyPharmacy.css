@@ -1,0 +1,104 @@
+/* WRAPPER */
+.nearby-wrapper {
+  width: 92%;
+  margin: auto;
+  padding-top: 25px;
+}
+
+/* TITLE */
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1b2a47;
+}
+
+/* === MAIN LAYOUT === */
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 22px;
+}
+
+/* === LEFT SIDEBAR LIST === */
+.pharmacy-list {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  height: 560px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.pharmacy-list h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1b2a47;
+  margin-bottom: 18px;
+}
+
+/* === LIST CARD STYLING === */
+.pharmacy-card {
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #f8f9ff;
+  transition: 0.2s ease;
+  border: 1px solid #edf0ff;
+  cursor: pointer;
+}
+
+.pharmacy-card:hover {
+  background: #eef3ff;
+  transform: translateX(3px);
+}
+
+.pharmacy-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #1b2a47;
+}
+
+.pharmacy-card p {
+  margin: 4px 0 0;
+  color: #555;
+  font-size: 14px;
+}
+
+/* === MAP === */
+.map-box {
+  height: 560px !important;
+  min-height: 560px !important;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent !important;   /* ✔ FIX HERE */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+
+/* ===== FIX — Leaflet map not visible ===== */
+
+
+
+.leaflet-pane,
+.leaflet-map-pane,
+.leaflet-tile-pane {
+  z-index: 5 !important;
+}
+
+.leaflet-tile {
+  visibility: visible !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+

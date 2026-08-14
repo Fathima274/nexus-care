@@ -1,0 +1,15 @@
+.pl-root {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f9fb;
+}
+
+/* Sidebar width */
+.pl-root > .sidebar {
+  width: 260px;
+}
+
+.pl-main {
+  flex: 1;
+  padding: 28px 36px;
+}

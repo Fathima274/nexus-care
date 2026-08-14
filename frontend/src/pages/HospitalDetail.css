@@ -1,0 +1,48 @@
+.detail-wrapper {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.hospital-detail-card {
+  width: 60%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.hospital-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #002466;
+  margin-bottom: 20px;
+}
+
+.hospital-detail-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.button-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-call {
+  background: #0066ff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-directions {
+  background: #0bbf64;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+}

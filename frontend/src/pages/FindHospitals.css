@@ -1,0 +1,92 @@
+.find-hospitals-page {
+  width: 100%;
+  padding: 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #002466;
+}
+
+.search-box {
+  width: 60%;
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.hospital-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 15px;
+}
+
+.hospital-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.hospital-card:hover {
+  transform: translateY(-4px);
+}
+
+.hospital-name {
+  font-size: 20px;
+  color: #002466;
+  font-weight: bold;
+}
+
+.hospital-location {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.hospital-meta span {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.availability-badge {
+  margin: 10px 0;
+  padding: 6px 14px;
+  display: inline-block;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.availability-badge.High { background: #d1ffd1; color: #008800; }
+.availability-badge.Medium { background: #fff4cc; color: #c77a00; }
+.availability-badge.Low { background: #ffd5d5; color: #cc0000; }
+
+.hospital-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-directions {
+  background: #0bbf64;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-details {
+  background: #e7f0ff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: #0045cc;
+  font-weight: 500;
+}

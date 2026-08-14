@@ -1,0 +1,62 @@
+.hero {
+  width: 100%;
+  padding: 80px 20px;
+  text-align: center;
+
+  /* Smooth medical gradient */
+  background: linear-gradient(to bottom, #e7f1ff, #ffffff);
+  color: #0d47a1;
+}
+
+.hero h4.tag {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1565c0;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 600px;
+  margin: 0 auto 25px auto;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn-primary {
+  background-color: #1565c0;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #1565c0;
+  color: #1565c0;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  opacity: 0.85;
+}

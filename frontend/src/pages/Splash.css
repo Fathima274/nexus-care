@@ -1,0 +1,33 @@
+.splash-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #1e90ff, #87cefa);
+  color: #003366;
+  font-family: "Poppins", sans-serif;
+}
+
+.splash-title {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.splash-subtitle {
+  margin-top: 10px;
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.splash-btn {
+  margin-top: 30px;
+  background-color: #0d6efd;
+  padding: 12px 24px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}

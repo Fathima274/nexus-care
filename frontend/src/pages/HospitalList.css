@@ -1,0 +1,120 @@
+/* General Styles */
+.hospital-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Hospital Container */
+.hospital-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.hospital-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 350px;
+}
+
+.hospital-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hospital-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid #ddd;
+}
+
+.hospital-info {
+  padding: 15px;
+}
+
+.hospital-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.hospital-location {
+  font-size: 1rem;
+  color: #555;
+}
+
+.specialization {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 10px;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: #444;
+  margin-top: 15px;
+}
+
+/* Buttons Styling */
+.hospital-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-call,
+.btn-directions {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  flex: 1;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-call:hover,
+.btn-directions:hover {
+  background-color: #0056b3;
+}
+
+/* Fix last button margin for right-aligned buttons */
+.hospital-buttons .btn-directions {
+  margin-right: 0;
+}
+
+/* Loading and Empty State */
+.loading, .empty {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hospital-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-card {
+    width: 100%;
+  }
+}
