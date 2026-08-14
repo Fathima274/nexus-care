@@ -12,9 +12,12 @@ import "leaflet-routing-machine";
 // Fix missing marker icons (Vite)
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  iconUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  shadowUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
 // Custom Icons
@@ -27,6 +30,9 @@ const pharmacyIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/1483/1483336.png",
   iconSize: [32, 32],
 });
+
+const API =
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 export default function NearbyPharmacy() {
   const [pharmacies, setPharmacies] = useState([]);
@@ -45,31 +51,42 @@ export default function NearbyPharmacy() {
       },
       () => {
         console.log("Location denied — using fallback.");
-        setUserPos({ lat: 12.9141, lng: 74.8560 }); // Mangalore
+        setUserPos({
+          lat: 12.9141,
+          lng: 74.8560,
+        });
       }
     );
 
-    fetch("http://localhost:5000/api/pharmacies")
+    fetch(`${API}/pharmacies`)
       .then((res) => res.json())
-      .then((data) => setPharmacies(data || []));
+      .then((data) => setPharmacies(data || []))
+      .catch((err) => {
+        console.error("Failed to load pharmacies:", err);
+      });
   }, []);
 
   // Distance calculator
   function getDistance(lat1, lon1, lat2, lon2) {
     const R = 6371;
+
     const dLat = ((lat2 - lat1) * Math.PI) / 180;
     const dLon = ((lon2 - lon1) * Math.PI) / 180;
 
     const a =
       Math.sin(dLat / 2) ** 2 +
-      Math.cos(lat1 * Math.PI / 180) *
-        Math.cos(lat2 * Math.PI / 180) *
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
         Math.sin(dLon / 2) ** 2;
 
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return (
+      R *
+      2 *
+      Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+    );
   }
 
-  // ⭐ ROUTING FUNCTION
+  // Routing function
   function showRoute(destLat, destLng) {
     if (!mapRef.current || !userPos) return;
 
@@ -93,7 +110,9 @@ export default function NearbyPharmacy() {
     }).addTo(mapRef.current);
   }
 
-  if (!userPos) return <p style={{ padding: 20 }}>Loading map…</p>;
+  if (!userPos) {
+    return <p style={{ padding: 20 }}>Loading map…</p>;
+  }
 
   return (
     <div className="nearby-wrapper">
@@ -106,11 +125,24 @@ export default function NearbyPharmacy() {
             <div
               key={p._id}
               className="pharmacy-card"
-              onClick={() => showRoute(p.location.lat, p.location.lng)}
+              onClick={() =>
+                p.location &&
+                showRoute(
+                  p.location.lat,
+                  p.location.lng
+                )
+              }
             >
               <h4>{p.name}</h4>
+
               <p>{p.address}</p>
-              <p style={{ marginTop: 8, fontWeight: 700 }}>
+
+              <p
+                style={{
+                  marginTop: 8,
+                  fontWeight: 700,
+                }}
+              >
                 Distance:{" "}
                 {p.location
                   ? `${getDistance(
@@ -128,10 +160,18 @@ export default function NearbyPharmacy() {
         {/* RIGHT MAP */}
         <div className="map-box">
           <MapContainer
-            center={[userPos.lat, userPos.lng]}
+            center={[
+              userPos.lat,
+              userPos.lng,
+            ]}
             zoom={13}
-            style={{ height: "100%", width: "100%" }}
-            whenCreated={(map) => (mapRef.current = map)}
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+            whenCreated={(map) =>
+              (mapRef.current = map)
+            }
           >
             <TileLayer
               url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -139,7 +179,13 @@ export default function NearbyPharmacy() {
             />
 
             {/* User marker */}
-            <Marker position={[userPos.lat, userPos.lng]} icon={userIcon}>
+            <Marker
+              position={[
+                userPos.lat,
+                userPos.lng,
+              ]}
+              icon={userIcon}
+            >
               <Popup>You are here</Popup>
             </Marker>
 
@@ -149,11 +195,16 @@ export default function NearbyPharmacy() {
                 p.location && (
                   <Marker
                     key={p._id}
-                    position={[p.location.lat, p.location.lng]}
+                    position={[
+                      p.location.lat,
+                      p.location.lng,
+                    ]}
                     icon={pharmacyIcon}
                   >
                     <Popup>
-                      <b>{p.name}</b> <br /> {p.address}
+                      <b>{p.name}</b>
+                      <br />
+                      {p.address}
                     </Popup>
                   </Marker>
                 )

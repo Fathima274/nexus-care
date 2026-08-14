@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./FindHospitals.css";
 
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
 export default function FindHospitals() {
   const [hospitals, setHospitals] = useState([]);
 
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("http://localhost:5000/api/hospitals");
+        const res = await fetch(`${API}/hospitals`);
         const data = await res.json();
         setHospitals(data);
       } catch (err) {

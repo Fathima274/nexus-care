@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./HospitalList.css";
-
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 export default function HospitalList() {
   const [hospitals, setHospitals] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -8,7 +8,7 @@ export default function HospitalList() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("http://localhost:5000/api/hospitals");
+        const res = await fetch(`${API}/hospitals`);
         const data = await res.json();
         setHospitals(data);
       } catch (err) {

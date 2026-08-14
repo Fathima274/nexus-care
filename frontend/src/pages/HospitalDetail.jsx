@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./HospitalDetail.css";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 export default function HospitalDetail() {
   const { id } = useParams();
@@ -8,7 +9,7 @@ export default function HospitalDetail() {
 
   useEffect(() => {
     async function load() {
-      const res = await fetch(`http://localhost:5000/api/hospitals/${id}`);
+      const res = await fetch(`${API}/hospitals/${id}`);
       const data = await res.json();
       setHospital(data);
     }
@@ -41,8 +42,11 @@ export default function HospitalDetail() {
 
           <a
             className="btn-directions"
-            href={`https://www.google.com/maps/search/?q=${hospital.address}`}
+            href={`https://www.google.com/maps/search/?q=${encodeURIComponent(
+  hospital.address
+)}`}
             target="_blank"
+rel="noopener noreferrer"
           >
             📍 Get Directions
           </a>
