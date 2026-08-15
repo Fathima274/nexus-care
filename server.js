@@ -29,33 +29,52 @@ const allowedOrigins = [
   "https://nexus-care-rapu.vercel.app"
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests without an origin
-      // such as Postman/server-to-server requests
-      if (!origin) {
-        return callback(null, true);
-      }
+const corsOptions = {
+  origin: function (origin, callback) {
 
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
+    // Allow requests without an origin
+    // Example: Postman or server-to-server requests
+    if (!origin) {
+      return callback(null, true);
+    }
 
-      console.log("❌ CORS blocked origin:", origin);
-      return callback(new Error("Not allowed by CORS"));
-    },
+    // Allow the main production frontend
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
 
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    // Allow Vercel preview deployments
+    if (
+      origin.startsWith("https://nexus-care-rapu-") &&
+      origin.endsWith("-fathimas-projects-982f2e75.vercel.app")
+    ) {
+      return callback(null, true);
+    }
 
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization"
-    ],
+    // Block unknown origins
+    console.log("❌ CORS blocked origin:", origin);
 
-    credentials: true
-  })
-);
+    return callback(new Error("Not allowed by CORS"));
+  },
+
+  methods: [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+    "PATCH",
+    "OPTIONS"
+  ],
+
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization"
+  ],
+
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 // =======================
 //       MIDDLEWARE
@@ -84,7 +103,10 @@ if (!uri) {
       console.log("✅ MongoDB connected");
     })
     .catch((error) => {
-      console.error("❌ MongoDB connection error:", error);
+      console.error(
+        "❌ MongoDB connection error:",
+        error
+      );
     });
 }
 
@@ -108,7 +130,10 @@ app.use("/api/medicine", aiMedicineRoutes);
 
 app.use("/api/medicine", medicineRoutes);
 
-app.use("/api/online-pharmacy", onlinePharmacyRoutes);
+app.use(
+  "/api/online-pharmacy",
+  onlinePharmacyRoutes
+);
 
 // =======================
 //       DEFAULT ROUTE
@@ -147,7 +172,9 @@ const PORT = process.env.PORT || 5000;
 
 if (!process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(
+      `🚀 Server running on port ${PORT}`
+    );
   });
 }
 
